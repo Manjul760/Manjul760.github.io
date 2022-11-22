@@ -1,0 +1,184 @@
+*{margin: 0;padding: 0;}
+body::-webkit-scrollbar {display: none;}
+body {-ms-overflow-style: none;scrollbar-width: none;}
+
+body,html{width: 100%;height: 100%;}
+body{
+    background-color: rgb(241, 230, 215);
+    overflow-x: hidden;
+}
+
+
+.text-center{text-align: center;}
+
+.h1{font-size:3vw;}
+.h2{font-size: 2vw;}
+.h1-extreme{font-size: 5vw;}
+
+
+.margin-b{margin-bottom: 1vw;}
+.margin-t{margin-top: 1vw;}
+.margin-t-large{margin-top: 5vw;}
+
+.pad-ex-small{padding: 0.2vw;}
+.pad-small{padding: 0.5vw}
+.pad-centralize{padding:5vw 10vw;}
+.pad{padding: 1vw;}
+.pad-r{padding-right: 1vw;}
+.pad-l{padding-right: 1vw;}
+
+
+.border-b{border-bottom: 2px solid black;}
+.border-t{border-top: 2px solid black;}
+.border{border: 2px solid black;}
+
+
+.profile{height:45vw;}
+.profile img{
+    display: block;
+    height:40vw;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.info-language{position: absolute;}
+.c{top: 10vw;left:10vw;}
+.python{top: 21vw;left:6vw;}
+.html{top: 32vw;left:6vw;}
+.css{top: 43vw;left:10vw;}
+.java{top: 10vw;left:75vw;}
+.javascript{top: 21vw;left:79vw;}
+.php{top: 32vw;left:79vw;}
+.csharp{top: 43vw;left:75vw;}
+
+.progress-bar h1{position: absolute;left: 1vw;top:-0.3vw;}
+.progress-bar{
+    text-align: center;
+    border-radius:1vw ;
+    height: 2vw;
+    width: 15vw;
+}
+.progress-bar div{
+    position: absolute;
+    height: inherit;
+    background-color: rgb(124, 124, 235);
+    border-radius: inherit;
+    
+}
+.progress-50{animation: grow-50 5s forwards;width: 50%;}
+.progress-25{animation: grow-25 5s forwards;width: 25%;}
+
+
+.description{
+    text-align: justify;
+    color: white;
+    height: 36.5vw;
+    background: url("../media/background1.jpg") no-repeat;
+    background-size: 100vw;
+}
+
+.skills{
+    background: url("../media/bg2.jpg") no-repeat;
+    background-size: 35vw;
+    background-position: right;
+    height: 36.5vw;
+}
+
+
+
+
+#tictactoe{
+    text-align: center;
+}
+#tictactoe td{
+    border:0.3vw solid black;
+}
+#tictactoe tr:nth-child(4) td{
+    border:none;padding: 1vw;
+}
+#tictactoe table{
+    margin: auto;
+    border-collapse: collapse;
+}
+#tictactoe div{
+    text-align: center;
+    cursor: pointer;
+    background-color: white;
+    height: 12.5vw;
+    width: 12.5vw;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 10vw;
+}
+
+#modulo-calc input{
+    width: 22.5vw;
+    height: 5vw;
+}
+
+#primitive-prime input{
+    width: 21vw;
+    height: 5vw;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer{
+    background-color: bisque;
+}
+
+
+.fidget{
+    position: relative;
+    animation: fidget;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width:600px) {
+    .pad-centralize{padding:5vw 5vw;}
+}
+
+
+
+
+
+
+@keyframes grow-50 {
+    0%{width:0;}
+    100%{width:50%;}
+}
+
+@keyframes grow-25 {
+    0%{width:0;}
+    100%{width:25%;}
+}
+
+@keyframes fidget {
+    0%{left:0;}
+    50%{left:0.7vw;}
+    100%{left:0;}
+}

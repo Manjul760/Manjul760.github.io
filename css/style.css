@@ -110,13 +110,8 @@ body{
     font-size: 10vw;
 }
 
-#modulo-calc input{
-    width: 22.5vw;
-    height: 5vw;
-}
-
 #primitive-prime input{
-    width: 21vw;
+    width: 20vw;
     height: 5vw;
 }
 

@@ -47,7 +47,7 @@ class TicTacToe
     plot(i,j)
     {   
         
-        this.winner()
+        if(this.winner()!=undefined){return undefined}
 
         if(this.me_plot && this.grid[i][j]=="v")
         {

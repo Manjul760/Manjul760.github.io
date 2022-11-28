@@ -7,7 +7,7 @@ class primitive_prime
             <input type="number" class="h1" id="v1_pp" onkeyup="prim_prime_finder.set_v1(this.value)" onchange="prim_prime_finder.set_v1(this.value)">
             <span class="h1"> &nbsp;and &nbsp;</span>
             <input type="number" class="h1" id="v2_pp" onkeyup="prim_prime_finder.set_v2(this.value)" onchange="prim_prime_finder.set_v2(this.value)">
-            <span class="h1"> &nbsp; are primitive prime?</span>
+            <span class="h1"> &nbsp; primitive prime?</span>
             <h1 class="h1">Answer = <span id="answer_prim_prime"></span></h1>
 
         `

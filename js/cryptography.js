@@ -68,8 +68,7 @@ class primitive_prime
         for(var i=1;i<a;i++)
         {
             var checkvalue =this.Mod((Math.pow(b,i)),a)
-            if(checkvalue==0){return undefined}
-            if(list_of_nums.indexOf(checkvalue)>-1)
+            if(list_of_nums.indexOf(checkvalue)>-1 || checkvalue==0)
             {
                 document.getElementById("answer_prim_prime").innerHTML="  No"
                 return undefined

@@ -1,3 +1,9 @@
+document.getElementById("Equation").addEventListener("input", function(event) {
+  event.preventDefault();
+  input.blur();
+});
+
+
 function add_text(str)
 {
     document.getElementById("Equation").value+=str

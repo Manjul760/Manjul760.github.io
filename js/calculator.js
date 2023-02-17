@@ -28,12 +28,12 @@ function factorial(a)
     return b
 }
 
-function per(n,r=0)
+function per(a,r=0)
 {
     return factorial(a)/factorial(a-r)
 }
 
-function comb(n,r=0)
+function comb(a,r=0)
 {
     return factorial(a)/(factorial(a-r)*factorial(r))
 }

@@ -96,7 +96,7 @@ function atan(x)
 function backspaceAtCursor(id)
 {
   var field = document.getElementById(id);
-
+  if(field.hasFocus()==false){field.focus()}
   if(field.selectionStart)
   {
     var startPos = field.selectionStart;

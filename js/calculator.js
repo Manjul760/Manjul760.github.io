@@ -1,4 +1,9 @@
 
+  var myTextarea = document.getElementById('Equation');
+  myTextarea.addEventListener('focus', function() {
+    this.blur();
+  });
+
 function add_text(str)
 {
     document.getElementById("Equation").value+=str

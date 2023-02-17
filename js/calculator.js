@@ -1,8 +1,3 @@
-document.getElementById("Equation").addEventListener("input", function(event) {
-  event.preventDefault();
-  input.blur();
-});
-
 
 function add_text(str)
 {
@@ -102,6 +97,7 @@ function atan(x)
 function backspaceAtCursor(id)
 {
      var field = document.getElementById(id);
+     fielf.focus();
      var startPos = field.selectionStart;
      var endPos = field.selectionEnd;
 

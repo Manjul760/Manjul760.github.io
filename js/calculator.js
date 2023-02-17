@@ -95,14 +95,11 @@ function atan(x)
 
 function backspaceAtCursor(id)
 {
-  var field = document.getElementById(id);
-  if(field.hasFocus()==false){field.selectionStart=0}
-  if(field.selectionStart)
-  {
-    var startPos = field.selectionStart;
-    var endPos = field.selectionEnd;
+     var field = document.getElementById(id);
+     var startPos = field.selectionStart;
+     var endPos = field.selectionEnd;
 
-    if(field.selectionStart == field.selectionEnd)
+     if(field.selectionStart == field.selectionEnd)
     {
       field.value = field.value.substring(0, startPos - 1) + field.value.substring(endPos, field.value.length);
 
@@ -116,5 +113,4 @@ function backspaceAtCursor(id)
       field.focus(); 
       field.setSelectionRange(startPos, startPos); 
     }
-  }
 }

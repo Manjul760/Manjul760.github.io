@@ -79,6 +79,37 @@ function tan(deg)
     return Math.tan(deg * pi()/180)
 }
 
+function cosec(deg)
+{
+    return 1/Math.sin(deg * pi()/180)
+}
+
+function sec(deg)
+{
+    return 1/Math.cos(deg * pi()/180)
+}
+
+function cot(deg)
+{
+    return 1/Math.tan(deg * pi()/180)
+}
+
+function acosec(deg)
+{
+    return 1/Math.asin(deg * pi()/180)
+}
+
+function asec(deg)
+{
+    return 1/Math.acos(deg * pi()/180)
+}
+
+function acot(deg)
+{
+    return 1/Math.atan(deg * pi()/180)
+}
+
+
 function asin(x)
 {
     return Math.asin(x)*180/pi()

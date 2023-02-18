@@ -81,17 +81,17 @@ function tan(deg)
 
 function cosec(deg)
 {
-    return Math.cosec(deg * pi()/180)
+    return 1/Math.sin(deg * pi()/180)
 }
 
 function sec(deg)
 {
-    return Math.sec(deg * pi()/180)
+    return 1/Math.cos(deg * pi()/180)
 }
 
 function cot(deg)
 {
-    return Math.cot(deg * pi()/180)
+    return 1/Math.tan(deg * pi()/180)
 }
 
 function asin(x)

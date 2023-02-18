@@ -96,17 +96,17 @@ function cot(deg)
 
 function acosec(deg)
 {
-    return 1/Math.asin(deg * pi()/180)
+    return Math.asin(1/deg * pi()/180)
 }
 
 function asec(deg)
 {
-    return 1/Math.acos(deg * pi()/180)
+    return Math.acos(1/deg * pi()/180)
 }
 
 function acot(deg)
 {
-    return 1/Math.atan(deg * pi()/180)
+    return Math.atan(1/deg * pi()/180)
 }
 
 

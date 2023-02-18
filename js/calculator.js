@@ -81,34 +81,18 @@ function tan(deg)
 
 function cosec(deg)
 {
-    return 1/Math.sin(deg * pi()/180)
+    return Math.cosec(deg * pi()/180)
 }
 
 function sec(deg)
 {
-    return 1/Math.cos(deg * pi()/180)
+    return Math.sec(deg * pi()/180)
 }
 
 function cot(deg)
 {
-    return 1/Math.tan(deg * pi()/180)
+    return Math.cot(deg * pi()/180)
 }
-
-function acosec(deg)
-{
-    return Math.asin(1/deg * pi()/180)
-}
-
-function asec(deg)
-{
-    return Math.acos(1/deg * pi()/180)
-}
-
-function acot(deg)
-{
-    return Math.atan(1/deg * pi()/180)
-}
-
 
 function asin(x)
 {
@@ -123,6 +107,22 @@ function acos(x)
 function atan(x)
 {
     return Math.atan(x) * 180/pi()
+}
+
+
+function acosec(x)
+{
+    return Math.asin(1/x)*180/pi()
+}
+
+function asec(x)
+{
+    return Math.acos(1/x) * 180/pi()
+}
+
+function acot(x)
+{
+    return Math.atan(1/x) * 180/pi()
 }
 
 function backspaceAtCursor(id)

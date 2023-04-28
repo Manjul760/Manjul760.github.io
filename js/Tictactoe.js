@@ -378,10 +378,10 @@ class BagChal
         //rendering bull sheet
         document.getElementById(this.idName).innerHTML = `
         <style>
-            #bagChalBoard .L{background-image: url(media/lion.jpg);background-position: center;background-size: 60%;background-repeat: no-repeat;}
-            #bagChalBoard .S{background-image: url(media/sheep.png);background-position: center;background-size: 60%;background-repeat: no-repeat;}
-            #bagChalBoard .Board{background-image: url(media/board.png);background-position: center;background-size: 100%;background-repeat: no-repeat;}
-            #bagChalBoard .selected{background-color: red;}
+            #bagChalBoard .L{background-image: url(media/lion.png);background-position: center;background-size: 100%;background-repeat: no-repeat;}
+            #bagChalBoard .S{background-image: url(media/sheep.png);background-position: center;background-size: 100%;background-repeat: no-repeat;}
+            #bagChalBoard .Board{background-image: url(media/board.png);background-position: center;background-size: 80%;background-repeat: no-repeat;}
+            #bagChalBoard .selected{background-color: red;border-radius:50%;}
         </style>`+str+`<style id="`+this.idName+`style"></style>`
 
 

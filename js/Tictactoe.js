@@ -332,6 +332,7 @@ class BagChal
     constructor(idName,objectName,size)
     {
         //just needed for declaration
+        this.gameEnded = false
         this.unit = "vw"
         this.objectName=objectName
         this.idName=idName
@@ -401,6 +402,7 @@ class BagChal
     styleOfBoard(){return `#bagChalBoard td{width:`+this.size+this.unit+`;height: `+this.size+this.unit+`;margin:`+this.size+this.unit+`;cursor:pointer;} ` }
     evaluate(row,column)
     {
+        if(this.gameEnded){return null}
         //code pe mat jao logic pe jao logic pe
         if(this.S.selected[0]==-1 && this.S.selected[1]==-1)//if nothing selected
         {
@@ -487,8 +489,8 @@ class BagChal
     }
     messsage()
     {
-        if(this.lionCantMove()){return "Winner is sheep"}
-        if(this.eatenCount==0){return "Winner is Lion"}
+        if(this.lionCantMove()){return "Winner is sheep";this.gameEnded=true}
+        if(this.eatenCount==0){return "Winner is Lion";this.gameEnded=true}
         return `Turn: `+this.S.turn+`| Sheep Left: `+this.S.bakhraCount+`| Sheep Eaten: `+this.S.eatenCount
     }
     pieceIn(row,column){if((row>=0&&column>=0) && (row<=4&&column<=4) ){return this.S.board[row][column]}return "DK"}

@@ -492,7 +492,7 @@ class BagChal
         if(this.eatenCount==0){this.gameEnded=true;return "Winner is Lion";}
         return `Turn: `+this.S.turn+`| Sheep Left: `+this.S.bakhraCount+`| Sheep Eaten: `+this.S.eatenCount
     }
-    pieceIn(row,column){console.log("input in function "+row+" "+column);if((row>=0&&column>=0) && (row<=4&&column<=4) ){return this.S.board[row][column]}return "DK"}
+    pieceIn(row,column){if((row>=0&&column>=0) && (row<=4&&column<=4) ){return this.S.board[row][column]}return "DK"}
     lionCantMove()
     {
         var places = [[1,0],[2,0],[0,1],[0,2],[1,1],[2,2]]

@@ -440,7 +440,6 @@ class BagChal
 
         }
         //message
-        console.log(JSON.stringify(this.S.board))
         document.getElementById(this.idName+"message").innerHTML=this.messsage()
         
     }
@@ -497,8 +496,6 @@ class BagChal
     lionCantMove()
     {
         var places = [[1,0],[2,0],[0,1],[0,2],[1,1],[2,2]]
-        console.log()
-        console.log(JSON.stringify(this.S.lionsPos))
         var a,b,c,d
         for(var i=0;i<4;i++)
         {
@@ -506,25 +503,15 @@ class BagChal
             for(var j=0;j<6;j++)
             {
                 [c,d] = places[j]
-                console.log(((a+b)%2==0)+" "+((a+b)%2==1)+" ")
                 if(((a+b)%2==0))
                 {
-                    console.log("first "+a+" "+b)
-                    console.log(this.pieceIn(a-c,b-d)+" "+(a-c)+" "+(b-d))
                     if(this.pieceIn(a-c,b-d)==""){return false}
-
-                    console.log(this.pieceIn(a+c,b-d)+" "+(a+c)+" "+(b-d))
                     if(this.pieceIn(a+c,b-d)==""){return false}
-
-                    console.log(this.pieceIn(a-c,b+d)+" "+(a-c)+" "+(b+d))
                     if(this.pieceIn(a-c,b+d)==""){return false}
-
-                    console.log(this.pieceIn(a+c,b+d)+" "+(a+c)+" "+(b+d))
                     if(this.pieceIn(a+c,b+d)==""){return false}
                 }
                 else if(((a+b)%2==1) && (c==0||d==0))
                 {
-                    console.log("second")
                     if(this.pieceIn(a-c,b-d)==""){return false}
                     if(this.pieceIn(a+c,b-d)==""){return false}
                     if(this.pieceIn(a-c,b+d)==""){return false}

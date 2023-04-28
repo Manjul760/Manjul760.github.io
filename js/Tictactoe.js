@@ -355,8 +355,8 @@ class BagChal
 
         //defining board bull sheet
         var str = `<table class="Board" style="margin:auto;text-align:center;">
-        <h1 class="h1">Lion and Sheep</h1><br>
-        <h1 class="h2">A classical game sadly doesnt have ai</h1><br>
+        <h1 class="h1" style="text-align:center;">Lion and Sheep</h1><br>
+        <h1 class="h2" style="text-align:center;">A classical game sadly doesnt have ai</h1><br>
         <h1 class="h2" id="`+this.idName+`message" style="text-align:center;" ></h1>
         `
         for(var i = 0;i<5;i++)

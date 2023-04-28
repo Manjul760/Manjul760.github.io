@@ -324,6 +324,205 @@ class TicTacToe
 
 }
 
+
+
+
+class BagChal 
+{
+    constructor(idName,objectName,size)
+    {
+        //just needed for declaration
+        this.unit = "vw"
+        this.objectName=objectName
+        this.idName=idName
+        this.size=size
+
+        //everything that makes this work
+        this.S ={
+            "lionsPos":[[0,0],[0,4],[4,0],[4,4]],
+            "turn":"S",
+            "selected":[-1,-1],
+            "bakhraCount":20,
+            "eatenCount":0,
+            "board":[
+                ["L","","","","L"],
+                ["","","","",""],
+                ["","","","",""],
+                ["","","","",""],
+                ["L","","","","L"]
+            ]
+        }
+
+        //defining board bull sheet
+        var str = `<table class="Board">
+        <h1 id="`+this.idName+`message"></h1>
+        `
+        for(var i = 0;i<5;i++)
+        {
+            str+= "<tr>"
+            for(var j = 0;j<5;j++)
+            {
+                str+=`<td 
+                id="`+this.idName+i+""+j+`" 
+                class="`+this.S.board[i][j]+`" 
+                onclick="`+this.objectName+`.evaluate(`+i+`,`+j+`)"
+                style=""></td>`
+            }
+            str+= "</tr>"
+        }
+        str+="</table>"
+
+        //rendering bull sheet
+        document.getElementById(this.idName).innerHTML = `
+        <style>
+            #bagChalBoard .L{background-image: url(media/lion.jpg);background-position: center;background-size: 60%;background-repeat: no-repeat;}
+            #bagChalBoard .S{background-image: url(media/sheep.png);background-position: center;background-size: 60%;background-repeat: no-repeat;}
+            #bagChalBoard .Board{background-image: url(media/board.png);background-position: center;background-size: 100%;background-repeat: no-repeat;}
+            #bagChalBoard .selected{background-color: red;}
+        </style>`+str+`<style id="`+this.idName+`style"></style>`
+
+
+        //styling bull sheet
+        if(window.innerWidth<window.innerHeight){ this.unit = "vw"}else{this.unit = "vh"}
+        document.getElementById(this.idName+`style`).innerHTML = this.styleOfBoard()
+
+        window.onresize = ()=>{
+            var prevunit = this.unit
+            if(window.innerWidth<window.innerHeight){ this.unit = "vw"}else{this.unit = "vh"}
+            if(this.unit != prevunit){document.getElementById(this.idName+`style`).innerHTML = this.styleOfBoard()}  
+        }
+
+        //message display
+        document.getElementById(this.idName+"message").innerHTML=this.messsage()
+    }
+    //only for the one that changes
+    styleOfBoard(){return `#bagChalBoard td{width:`+this.size+this.unit+`;height: `+this.size+this.unit+`;margin:`+this.size+this.unit+`;cursor:pointer;} ` }
+    evaluate(row,column)
+    {
+        //code pe mat jao logic pe jao logic pe
+        if(this.S.selected[0]==-1 && this.S.selected[1]==-1)//if nothing selected
+        {
+            if(this.S.turn =="S" && this.pieceIn(row,column)==""&&this.S.bakhraCount>0){this.putSheep(row,column)}
+            else if(this.S.turn == this.pieceIn(row,column)){this.selectPosition(row,column)}
+        }
+        else//if something selected
+        {
+            if(this.pieceIn(row,column)==""&&[row,column]!=this.S.selected)
+            {
+                if( (Math.abs(this.S.selected[0] - row) == 1 && Math.abs(this.S.selected[1] - column) == 1)  )
+                {
+                    if((row+column)%2 == 0){this.makeMove(row,column);}
+                }
+                else if((Math.abs(this.S.selected[0] - row) == 0 && Math.abs(this.S.selected[1] - column) == 1)||(Math.abs(this.S.selected[0] - row) == 1 && Math.abs(this.S.selected[1] - column) == 0))
+                {
+                    this.makeMove(row,column)
+                }
+                else if(this.S.turn=="L" &&this.pieceIn((this.S.selected[0] + row)/2,(this.S.selected[1] + column)/2)=="S") 
+                {
+                    
+                    if((Math.abs(this.S.selected[0] - row) == 2 && Math.abs(this.S.selected[1] - column) == 2) )
+                    {
+                        if((row+column)%2 == 0){this.lionEatSheep(row,column);}         
+                    }
+                    else if((Math.abs(this.S.selected[0] - row) == 0 && Math.abs(this.S.selected[1] - column) == 2)||(Math.abs(this.S.selected[0] - row) == 2 && Math.abs(this.S.selected[1] - column) == 0))
+                    {
+                        this.lionEatSheep(row,column)
+                    }
+                }
+   
+            }
+            document.getElementById(this.idName+this.S.selected[0]+""+this.S.selected[1]).classList.remove("selected")
+            this.S.selected=[-1,-1]
+
+        }
+        //message
+        console.log(JSON.stringify(this.S.board))
+        document.getElementById(this.idName+"message").innerHTML=this.messsage()
+        
+    }
+
+    //helper functions very important DND or Program TNT
+    updateLionPos(row,column)
+    {
+        var idx
+        for(var i=0;i<4;i++)
+        {
+            if(this.S.selected[0]==this.S.lionsPos[i][0]&& this.S.lionsPos[i][1]==this.S.selected[1]){idx=i;break;}
+        }
+        this.S.lionsPos[idx]=[row,column]
+    }
+    makeMove(row,column)
+    {
+        if(this.S.turn=="L"){this.updateLionPos(row,column) }
+
+        this.S.board[row][column] = this.S.board[this.S.selected[0]][this.S.selected[1]]
+        this.S.board[this.S.selected[0]][this.S.selected[1]] = ""
+        document.getElementById(this.idName+this.S.selected[0]+""+this.S.selected[1]).classList = ""
+        document.getElementById(this.idName+row+""+column).classList.add(this.S.board[row][column])
+        if(this.S.turn=="L"){this.S.turn="S"}else{this.S.turn="L"}
+    }
+    lionEatSheep(row,column)
+    {
+        this.updateLionPos(row,column)
+
+        this.makeMove(row,column)
+        this.S.board[(this.S.selected[0] + row)/2][(this.S.selected[1] + column)/2]=""
+        document.getElementById(this.idName+((this.S.selected[0] + row)/2)+""+((this.S.selected[1] + column)/2)).classList=""
+        this.S.turn="S"
+        this.S.eatenCount++
+    }
+    putSheep(row,column)
+    {
+        this.S.board[row][column] = "S"
+        document.getElementById(this.idName+row+""+column).classList.add("S")
+        this.S.turn="L"
+        this.S.bakhraCount--
+    }
+    selectPosition(row,column)
+    {
+        this.S.selected = [row,column]
+        document.getElementById(this.idName+row+""+column).classList.add("selected")
+    }
+    messsage()
+    {
+        if(this.lionCantMove()){return "Winner is sheep"}
+        if(this.eatenCount==0){return "Winner is Lion"}
+        return `Turn: `+this.S.turn+`| Sheep Left: `+this.S.bakhraCount+`| Sheep Eaten: `+this.S.eatenCount
+    }
+    pieceIn(row,column){if((row>=0&&column>=0) && (row<=4&&column<=4) ){return this.S.board[row][column]}return "DK"}
+    lionCantMove()
+    {
+        var places = [[1,0],[2,0],[0,1],[0,2],[1,1],[2,2]]
+        var a,b,c,d
+        for(var i=0;i<4;i++)
+        {
+            [a,b] = this.S.lionsPos[i]
+            for(var j=0;j<5;j++)
+            {
+                [c,d] = places[j]
+                
+                if((a+b)%2==0)
+                {
+                    if(this.pieceIn(a-c,b-d)==""){return false}
+                    if(this.pieceIn(a+c,b-d)==""){return false}
+                    if(this.pieceIn(a-c,b+d)==""){return false}
+                    if(this.pieceIn(a+c,b+d)==""){return false}
+                }
+                else if(c==0||d==0)
+                {
+                    if(this.pieceIn(a-c,b-d)==""){return false}
+                    if(this.pieceIn(a+c,b-d)==""){return false}
+                    if(this.pieceIn(a-c,b+d)==""){return false}
+                    if(this.pieceIn(a+c,b+d)==""){return false}
+                }
+            }   
+        }
+        return true
+    }
+
+}
+
+var LionSheep = new BagChal("bagChalBoard","LionSheep",17)
 let game = new TicTacToe("X","O",true,false);
 
 

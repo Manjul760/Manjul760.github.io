@@ -350,7 +350,7 @@ class BagChal
                 ["","","","",""],
                 ["","","","",""],
                 ["","","","",""],
-                ["L","","","","L"]
+                ["L","L","","","L"]
             ]
         }
 
@@ -489,31 +489,42 @@ class BagChal
     }
     messsage()
     {
-        if(this.lionCantMove()){return "Winner is sheep";this.gameEnded=true}
-        if(this.eatenCount==0){return "Winner is Lion";this.gameEnded=true}
+        if(this.lionCantMove()){this.gameEnded=true;return "Winner is sheep";}
+        if(this.eatenCount==0){this.gameEnded=true;return "Winner is Lion";}
         return `Turn: `+this.S.turn+`| Sheep Left: `+this.S.bakhraCount+`| Sheep Eaten: `+this.S.eatenCount
     }
-    pieceIn(row,column){if((row>=0&&column>=0) && (row<=4&&column<=4) ){return this.S.board[row][column]}return "DK"}
+    pieceIn(row,column){console.log("input in function "+row+" "+column);if((row>=0&&column>=0) && (row<=4&&column<=4) ){return this.S.board[row][column]}return "DK"}
     lionCantMove()
     {
         var places = [[1,0],[2,0],[0,1],[0,2],[1,1],[2,2]]
+        console.log()
+        console.log(JSON.stringify(this.S.lionsPos))
         var a,b,c,d
         for(var i=0;i<4;i++)
         {
             [a,b] = this.S.lionsPos[i]
-            for(var j=0;j<5;j++)
+            for(var j=0;j<6;j++)
             {
                 [c,d] = places[j]
-                
-                if((a+b)%2==0)
+                console.log(((a+b)%2==0)+" "+((a+b)%2==1)+" ")
+                if(((a+b)%2==0))
                 {
+                    console.log("first "+a+" "+b)
+                    console.log(this.pieceIn(a-c,b-d)+" "+(a-c)+" "+(b-d))
                     if(this.pieceIn(a-c,b-d)==""){return false}
+
+                    console.log(this.pieceIn(a+c,b-d)+" "+(a+c)+" "+(b-d))
                     if(this.pieceIn(a+c,b-d)==""){return false}
+
+                    console.log(this.pieceIn(a-c,b+d)+" "+(a-c)+" "+(b+d))
                     if(this.pieceIn(a-c,b+d)==""){return false}
+
+                    console.log(this.pieceIn(a+c,b+d)+" "+(a+c)+" "+(b+d))
                     if(this.pieceIn(a+c,b+d)==""){return false}
                 }
-                else if(c==0||d==0)
+                else if(((a+b)%2==1) && (c==0||d==0))
                 {
+                    console.log("second")
                     if(this.pieceIn(a-c,b-d)==""){return false}
                     if(this.pieceIn(a+c,b-d)==""){return false}
                     if(this.pieceIn(a-c,b+d)==""){return false}

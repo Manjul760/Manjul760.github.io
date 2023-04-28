@@ -354,8 +354,8 @@ class BagChal
         }
 
         //defining board bull sheet
-        var str = `<table class="Board">
-        <h1 id="`+this.idName+`message"></h1>
+        var str = `<table class="Board" style="margin:auto;text-align:center;">
+        <h1 id="`+this.idName+`message" style="text-align:center;" ></h1>
         `
         for(var i = 0;i<5;i++)
         {
@@ -370,7 +370,7 @@ class BagChal
             }
             str+= "</tr>"
         }
-        str+="</table>"
+        str+=`<caption><input type="button" onclick='`+this.objectName+` = new BagChal("`+this.idName+`","`+this.objectName+`",`+this.size+`)' value="Reset"></caption></table>`
 
         //rendering bull sheet
         document.getElementById(this.idName).innerHTML = `
